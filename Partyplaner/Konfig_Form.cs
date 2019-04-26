@@ -20,6 +20,7 @@ namespace Partyplaner
 
         private void Form1_Load(object sender, EventArgs e)
         {
+			// TODO Pfad dynamisch machen
             var configRoot = XElement.Load("D:\\Workspaces\\Visual Studio 2019\\C#\\Partyplaner\\Partyplaner\\Partyplaner\\config.xml");
             var gaestelisteNode = configRoot.Element("gaesteliste");
 
