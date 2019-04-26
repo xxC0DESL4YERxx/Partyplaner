@@ -16,7 +16,7 @@ namespace Partyplaner
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Konfiguration_Window());
+            Application.Run(new Konfig_Form());
         }
     }
 }

@@ -9,31 +9,27 @@
 							<xs:element maxOccurs="unbounded" name="gast">
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="name" type="xs:string" />
-										<xs:element name="beruf" type="xs:string" />
 										<xs:element name="startposition">
 											<xs:complexType>
-												<xs:sequence>
-													<xs:element name="x" type="xs:int" />
-													<xs:element name="y" type="xs:int" />
-												</xs:sequence>
+												<xs:attribute name="x" type="xs:int" use="required" />
+												<xs:attribute name="y" type="xs:int" use="required" />
 											</xs:complexType>
 										</xs:element>
 										<xs:element name="wunschabstaende">
 											<xs:complexType>
 												<xs:sequence>
-													<xs:element name="wunschabstand">
+													<xs:element maxOccurs="unbounded" name="wunschabstand">
 														<xs:complexType>
-															<xs:sequence>
-																<xs:element name="name" type="xs:string" />
-																<xs:element name="distanz" type="xs:int" />
-															</xs:sequence>
+															<xs:attribute name="gast" type="xs:string" use="required" />
+															<xs:attribute name="distanz" type="xs:int" use="required" />
 														</xs:complexType>
 													</xs:element>
 												</xs:sequence>
 											</xs:complexType>
 										</xs:element>
 									</xs:sequence>
+									<xs:attribute name="name" type="xs:string" use="required" />
+									<xs:attribute name="beruf" type="xs:string" use="required" />
 								</xs:complexType>
 							</xs:element>
 						</xs:sequence>
@@ -44,10 +40,8 @@
 						<xs:sequence>
 							<xs:element name="groesse">
 								<xs:complexType>
-									<xs:sequence>
-										<xs:element name="x" type="xs:int" />
-										<xs:element name="y" type="xs:int" />
-									</xs:sequence>
+									<xs:attribute name="x" type="xs:int" use="required" />
+									<xs:attribute name="y" type="xs:int" use="required" />
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="tisch">
@@ -55,18 +49,14 @@
 									<xs:sequence>
 										<xs:element name="groesse">
 											<xs:complexType>
-												<xs:sequence>
-													<xs:element name="x" type="xs:int" />
-													<xs:element name="y" type="xs:int" />
-												</xs:sequence>
+												<xs:attribute name="x" type="xs:int" use="required" />
+												<xs:attribute name="y" type="xs:int" use="required" />
 											</xs:complexType>
 										</xs:element>
 										<xs:element name="position">
 											<xs:complexType>
-												<xs:sequence>
-													<xs:element name="x" type="xs:int" />
-													<xs:element name="y" type="xs:int" />
-												</xs:sequence>
+												<xs:attribute name="x" type="xs:int" use="required" />
+												<xs:attribute name="y" type="xs:int" use="required" />
 											</xs:complexType>
 										</xs:element>
 									</xs:sequence>
