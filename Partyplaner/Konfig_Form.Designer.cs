@@ -51,12 +51,12 @@
 			this.num_wunschabstand = new System.Windows.Forms.NumericUpDown();
 			this.lb_wunschabstand = new System.Windows.Forms.Label();
 			this.list_gaeste_wunschabstand = new System.Windows.Forms.ListBox();
-			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+			this.num_startpos_y = new System.Windows.Forms.NumericUpDown();
 			this.lb_startpos_y = new System.Windows.Forms.Label();
 			this.num_startpos_x = new System.Windows.Forms.NumericUpDown();
 			this.lb_startpos_x = new System.Windows.Forms.Label();
 			this.lb_beruf = new System.Windows.Forms.Label();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.txt_beruf = new System.Windows.Forms.TextBox();
 			this.lb_name = new System.Windows.Forms.Label();
 			this.txt_name = new System.Windows.Forms.TextBox();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -76,7 +76,7 @@
 			this.grp_gaeste.SuspendLayout();
 			this.grp_gast.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.num_wunschabstand)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.num_startpos_y)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.num_startpos_x)).BeginInit();
 			this.tableLayoutPanel4.SuspendLayout();
 			this.tableLayoutPanel5.SuspendLayout();
@@ -368,13 +368,13 @@
 			this.list_gaeste_wunschabstand.Size = new System.Drawing.Size(377, 239);
 			this.list_gaeste_wunschabstand.TabIndex = 9;
 			// 
-			// numericUpDown1
+			// num_startpos_y
 			// 
-			this.numericUpDown1.Location = new System.Drawing.Point(227, 225);
-			this.numericUpDown1.Name = "numericUpDown1";
-			this.numericUpDown1.Size = new System.Drawing.Size(218, 29);
-			this.numericUpDown1.TabIndex = 8;
-			this.numericUpDown1.Value = new decimal(new int[] {
+			this.num_startpos_y.Location = new System.Drawing.Point(227, 225);
+			this.num_startpos_y.Name = "num_startpos_y";
+			this.num_startpos_y.Size = new System.Drawing.Size(218, 29);
+			this.num_startpos_y.TabIndex = 8;
+			this.num_startpos_y.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -419,12 +419,12 @@
 			this.lb_beruf.TabIndex = 3;
 			this.lb_beruf.Text = "Beruf:";
 			// 
-			// textBox1
+			// txt_beruf
 			// 
-			this.textBox1.Location = new System.Drawing.Point(227, 77);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(218, 29);
-			this.textBox1.TabIndex = 2;
+			this.txt_beruf.Location = new System.Drawing.Point(227, 77);
+			this.txt_beruf.Name = "txt_beruf";
+			this.txt_beruf.Size = new System.Drawing.Size(218, 29);
+			this.txt_beruf.TabIndex = 2;
 			// 
 			// lb_name
 			// 
@@ -450,8 +450,8 @@
 			this.tableLayoutPanel4.Controls.Add(this.lb_name, 0, 0);
 			this.tableLayoutPanel4.Controls.Add(this.txt_name, 1, 0);
 			this.tableLayoutPanel4.Controls.Add(this.lb_beruf, 0, 1);
-			this.tableLayoutPanel4.Controls.Add(this.numericUpDown1, 1, 3);
-			this.tableLayoutPanel4.Controls.Add(this.textBox1, 1, 1);
+			this.tableLayoutPanel4.Controls.Add(this.num_startpos_y, 1, 3);
+			this.tableLayoutPanel4.Controls.Add(this.txt_beruf, 1, 1);
 			this.tableLayoutPanel4.Controls.Add(this.lb_startpos_y, 0, 3);
 			this.tableLayoutPanel4.Controls.Add(this.lb_startpos_x, 0, 2);
 			this.tableLayoutPanel4.Controls.Add(this.num_startpos_x, 1, 2);
@@ -518,7 +518,7 @@
 			this.grp_gaeste.ResumeLayout(false);
 			this.grp_gast.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.num_wunschabstand)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.num_startpos_y)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.num_startpos_x)).EndInit();
 			this.tableLayoutPanel4.ResumeLayout(false);
 			this.tableLayoutPanel4.PerformLayout();
@@ -553,12 +553,12 @@
 		private System.Windows.Forms.NumericUpDown num_wunschabstand;
 		private System.Windows.Forms.Label lb_wunschabstand;
 		private System.Windows.Forms.ListBox list_gaeste_wunschabstand;
-		private System.Windows.Forms.NumericUpDown numericUpDown1;
+		private System.Windows.Forms.NumericUpDown num_startpos_y;
 		private System.Windows.Forms.Label lb_startpos_y;
 		private System.Windows.Forms.NumericUpDown num_startpos_x;
 		private System.Windows.Forms.Label lb_startpos_x;
 		private System.Windows.Forms.Label lb_beruf;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox txt_beruf;
 		private System.Windows.Forms.Label lb_name;
 		private System.Windows.Forms.TextBox txt_name;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;

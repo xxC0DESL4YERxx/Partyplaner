@@ -30,17 +30,52 @@ namespace Partyplaner
 			var raumTischGroesseNode = raumTischNode.Element("groesse");
 			var raumTischPositionNode = raumTischNode.Element("position");
 
-			foreach (var gastNode in gaestelisteNode.Elements())
+			var gaesteliste = new List<Gast>();
+			foreach (var gastNode in gaestelisteNode.Elements("gast"))
 			{
-				// TODO Gäste parsen
-
+				var name = gastNode.Attribute("name").Value;
+				var beruf = gastNode.Attribute("beruf").Value;
+				var position = ExtractXYDataFromNode(gastNode.Element("startposition"));
+				var wunschabstaende = new Dictionary<string, int>();
+				var wunschabstaendeNodes = gastNode.Element("wunschabstaende").Elements("wunschabstand");
+				foreach (var eachWunschabstandNode in wunschabstaendeNodes)
+				{
+					var abstandName = eachWunschabstandNode.Attribute("gast").Value;
+					var abstandDistanz = Convert.ToInt32(eachWunschabstandNode.Attribute("distanz").Value);
+					wunschabstaende.Add(abstandName, abstandDistanz);
+				}
+				gaesteliste.Add(new Gast(name, beruf, new Point(position.Item1, position.Item2), wunschabstaende));
 			}
+			Console.WriteLine(gaesteliste);
 			var raumGroesse = ExtractXYDataFromNode(raumGroesseNode);
 			var tischGroesse = ExtractXYDataFromNode(raumTischGroesseNode);
 			var tischPosition = ExtractXYDataFromNode(raumTischPositionNode);
 			// TODO Daten in Oberfläche laden
+			num_raum_groesse_x.Value = raumGroesse.Item1;
+			num_raum_groesse_y.Value = raumGroesse.Item2;
+			num_tisch_groesse_x.Value = tischGroesse.Item1;
+			num_tisch_groesse_y.Value = tischGroesse.Item2;
+			num_tisch_pos_x.Value = tischPosition.Item1;
+			num_tisch_pos_y.Value = tischPosition.Item2;
 
-        }
+			list_gaesteliste.BeginUpdate();
+			foreach (var gast in gaesteliste)
+			{
+				list_gaesteliste.Items.Add(gast);
+			}
+			list_gaesteliste.SelectedValueChanged += OnGastSelectionChanged;
+			list_gaesteliste.EndUpdate();
+		}
+
+		private void OnGastSelectionChanged(object sender, EventArgs ev)
+		{
+			var gast = (Gast)list_gaesteliste.SelectedItem;
+			txt_name.Text = gast.name;
+			txt_beruf.Text = gast.beruf;
+			num_startpos_x.Value = gast.position.X;
+			num_startpos_y.Value = gast.position.Y;
+			// TODO Wunschabstände
+		}
 
 		private Tuple<int, int> ExtractXYDataFromNode(XElement node)
 		{
