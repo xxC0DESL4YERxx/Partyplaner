@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<konfiguration>
+  <gaesteliste>
+    <gast>
+      <name>Walther White</name>
+      <beruf>Koch</beruf>
+			<startposition>
+				<x>1</x>
+				<y>1</y>
+			</startposition>
+      <wunschabstaende>
+        <wunschabstand>
+          <name>Ash Ketchum</name>
+          <distanz>3</distanz>
+        </wunschabstand>
+      </wunschabstaende>
+    </gast>
+		<gast>
+			<name>Ash Ketchum</name>
+			<beruf>Pokemontrainer</beruf>
+			<startposition>
+				<x>5</x>
+				<y>5</y>
+			</startposition>
+			<wunschabstaende>
+				<wunschabstand>
+					<name>Walther White</name>
+					<distanz>7</distanz>
+				</wunschabstand>
+			</wunschabstaende>
+		</gast>
+  </gaesteliste>
+  <raum>
+    <groesse>
+      <x>50</x>
+      <y>50</y>
+    </groesse>
+    <tisch>
+      <groesse>
+        <x>10</x>
+        <y>10</y>
+      </groesse>
+			<position>
+				<x>25</x>
+				<y>25</y>
+			</position>
+    </tisch>
+  </raum>
+</konfiguration>
