@@ -32,8 +32,8 @@
 			this.grp_gaeste = new System.Windows.Forms.GroupBox();
 			this.grp_gast = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-			this.list_gaeste_wunschabstand = new System.Windows.Forms.ListBox();
 			this.lb_wunschabstand = new System.Windows.Forms.Label();
+			this.list_gaeste_wunschabstand = new System.Windows.Forms.ListBox();
 			this.num_wunschabstand = new System.Windows.Forms.NumericUpDown();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
 			this.lb_name = new System.Windows.Forms.Label();
@@ -62,6 +62,9 @@
 			this.num_raum_groesse_x = new System.Windows.Forms.NumericUpDown();
 			this.lb_raum_groesse_y = new System.Windows.Forms.Label();
 			this.btn_ok = new System.Windows.Forms.Button();
+			this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+			this.btn_gast_loeschen = new System.Windows.Forms.Button();
+			this.btn_gast_hinzufuegen = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.grp_gaeste.SuspendLayout();
 			this.grp_gast.SuspendLayout();
@@ -80,6 +83,7 @@
 			this.tableLayoutPanel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.num_raum_groesse_y)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.num_raum_groesse_x)).BeginInit();
+			this.tableLayoutPanel6.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tableLayoutPanel1
@@ -95,8 +99,8 @@
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 3;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(1239, 829);
 			this.tableLayoutPanel1.TabIndex = 9;
@@ -104,12 +108,13 @@
 			// grp_gaeste
 			// 
 			this.tableLayoutPanel1.SetColumnSpan(this.grp_gaeste, 2);
+			this.grp_gaeste.Controls.Add(this.tableLayoutPanel6);
 			this.grp_gaeste.Controls.Add(this.grp_gast);
 			this.grp_gaeste.Controls.Add(this.list_gaesteliste);
 			this.grp_gaeste.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.grp_gaeste.Location = new System.Drawing.Point(3, 376);
+			this.grp_gaeste.Location = new System.Drawing.Point(3, 293);
 			this.grp_gaeste.Name = "grp_gaeste";
-			this.grp_gaeste.Size = new System.Drawing.Size(1233, 367);
+			this.grp_gaeste.Size = new System.Drawing.Size(1233, 449);
 			this.grp_gaeste.TabIndex = 16;
 			this.grp_gaeste.TabStop = false;
 			this.grp_gaeste.Text = "Gäste";
@@ -118,9 +123,10 @@
 			// 
 			this.grp_gast.Controls.Add(this.tableLayoutPanel5);
 			this.grp_gast.Controls.Add(this.tableLayoutPanel4);
-			this.grp_gast.Location = new System.Drawing.Point(310, 26);
+			this.grp_gast.Dock = System.Windows.Forms.DockStyle.Top;
+			this.grp_gast.Location = new System.Drawing.Point(303, 27);
 			this.grp_gast.Name = "grp_gast";
-			this.grp_gast.Size = new System.Drawing.Size(920, 337);
+			this.grp_gast.Size = new System.Drawing.Size(927, 337);
 			this.grp_gast.TabIndex = 14;
 			this.grp_gast.TabStop = false;
 			this.grp_gast.Text = "Gewählten Gast konfigurieren";
@@ -134,13 +140,23 @@
 			this.tableLayoutPanel5.Controls.Add(this.list_gaeste_wunschabstand, 0, 0);
 			this.tableLayoutPanel5.Controls.Add(this.num_wunschabstand, 1, 1);
 			this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Right;
-			this.tableLayoutPanel5.Location = new System.Drawing.Point(499, 27);
+			this.tableLayoutPanel5.Location = new System.Drawing.Point(506, 27);
 			this.tableLayoutPanel5.Name = "tableLayoutPanel5";
 			this.tableLayoutPanel5.RowCount = 2;
 			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 83.00835F));
 			this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.99164F));
 			this.tableLayoutPanel5.Size = new System.Drawing.Size(418, 307);
 			this.tableLayoutPanel5.TabIndex = 16;
+			// 
+			// lb_wunschabstand
+			// 
+			this.lb_wunschabstand.AutoSize = true;
+			this.lb_wunschabstand.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lb_wunschabstand.Location = new System.Drawing.Point(3, 254);
+			this.lb_wunschabstand.Name = "lb_wunschabstand";
+			this.lb_wunschabstand.Size = new System.Drawing.Size(259, 53);
+			this.lb_wunschabstand.TabIndex = 10;
+			this.lb_wunschabstand.Text = "Wunschabstand:";
 			// 
 			// list_gaeste_wunschabstand
 			// 
@@ -153,19 +169,10 @@
 			this.list_gaeste_wunschabstand.Size = new System.Drawing.Size(412, 248);
 			this.list_gaeste_wunschabstand.TabIndex = 9;
 			// 
-			// lb_wunschabstand
-			// 
-			this.lb_wunschabstand.AutoSize = true;
-			this.lb_wunschabstand.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.lb_wunschabstand.Location = new System.Drawing.Point(3, 254);
-			this.lb_wunschabstand.Name = "lb_wunschabstand";
-			this.lb_wunschabstand.Size = new System.Drawing.Size(259, 53);
-			this.lb_wunschabstand.TabIndex = 10;
-			this.lb_wunschabstand.Text = "Wunschabstand:";
-			// 
 			// num_wunschabstand
 			// 
 			this.num_wunschabstand.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.num_wunschabstand.Enabled = false;
 			this.num_wunschabstand.Location = new System.Drawing.Point(268, 257);
 			this.num_wunschabstand.Name = "num_wunschabstand";
 			this.num_wunschabstand.Size = new System.Drawing.Size(147, 31);
@@ -206,6 +213,7 @@
 			// 
 			// txt_name
 			// 
+			this.txt_name.Enabled = false;
 			this.txt_name.Location = new System.Drawing.Point(247, 3);
 			this.txt_name.Name = "txt_name";
 			this.txt_name.Size = new System.Drawing.Size(237, 31);
@@ -222,6 +230,7 @@
 			// 
 			// num_startpos_y
 			// 
+			this.num_startpos_y.Enabled = false;
 			this.num_startpos_y.Location = new System.Drawing.Point(247, 231);
 			this.num_startpos_y.Name = "num_startpos_y";
 			this.num_startpos_y.Size = new System.Drawing.Size(238, 31);
@@ -234,6 +243,7 @@
 			// 
 			// txt_beruf
 			// 
+			this.txt_beruf.Enabled = false;
 			this.txt_beruf.Location = new System.Drawing.Point(247, 79);
 			this.txt_beruf.Name = "txt_beruf";
 			this.txt_beruf.Size = new System.Drawing.Size(237, 31);
@@ -259,6 +269,7 @@
 			// 
 			// num_startpos_x
 			// 
+			this.num_startpos_x.Enabled = false;
 			this.num_startpos_x.Location = new System.Drawing.Point(247, 155);
 			this.num_startpos_x.Name = "num_startpos_x";
 			this.num_startpos_x.Size = new System.Drawing.Size(238, 31);
@@ -276,7 +287,7 @@
 			this.list_gaesteliste.ItemHeight = 25;
 			this.list_gaesteliste.Location = new System.Drawing.Point(3, 27);
 			this.list_gaesteliste.Name = "list_gaesteliste";
-			this.list_gaesteliste.Size = new System.Drawing.Size(300, 337);
+			this.list_gaesteliste.Size = new System.Drawing.Size(300, 419);
 			this.list_gaesteliste.TabIndex = 11;
 			// 
 			// grp_tisch
@@ -285,7 +296,7 @@
 			this.grp_tisch.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.grp_tisch.Location = new System.Drawing.Point(622, 3);
 			this.grp_tisch.Name = "grp_tisch";
-			this.grp_tisch.Size = new System.Drawing.Size(614, 367);
+			this.grp_tisch.Size = new System.Drawing.Size(614, 284);
 			this.grp_tisch.TabIndex = 12;
 			this.grp_tisch.TabStop = false;
 			this.grp_tisch.Text = "Tisch";
@@ -311,7 +322,7 @@
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tableLayoutPanel3.Size = new System.Drawing.Size(608, 337);
+			this.tableLayoutPanel3.Size = new System.Drawing.Size(608, 254);
 			this.tableLayoutPanel3.TabIndex = 14;
 			// 
 			// lb_tisch_groesse_x
@@ -320,14 +331,14 @@
 			this.lb_tisch_groesse_x.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.lb_tisch_groesse_x.Location = new System.Drawing.Point(3, 0);
 			this.lb_tisch_groesse_x.Name = "lb_tisch_groesse_x";
-			this.lb_tisch_groesse_x.Size = new System.Drawing.Size(298, 84);
+			this.lb_tisch_groesse_x.Size = new System.Drawing.Size(298, 63);
 			this.lb_tisch_groesse_x.TabIndex = 7;
 			this.lb_tisch_groesse_x.Text = "Grösse X:";
 			// 
 			// num_tisch_pos_y
 			// 
 			this.num_tisch_pos_y.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.num_tisch_pos_y.Location = new System.Drawing.Point(307, 255);
+			this.num_tisch_pos_y.Location = new System.Drawing.Point(307, 192);
 			this.num_tisch_pos_y.Name = "num_tisch_pos_y";
 			this.num_tisch_pos_y.Size = new System.Drawing.Size(298, 31);
 			this.num_tisch_pos_y.TabIndex = 13;
@@ -341,9 +352,9 @@
 			// 
 			this.lb_tisch_pos_x.AutoSize = true;
 			this.lb_tisch_pos_x.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.lb_tisch_pos_x.Location = new System.Drawing.Point(3, 168);
+			this.lb_tisch_pos_x.Location = new System.Drawing.Point(3, 126);
 			this.lb_tisch_pos_x.Name = "lb_tisch_pos_x";
-			this.lb_tisch_pos_x.Size = new System.Drawing.Size(298, 84);
+			this.lb_tisch_pos_x.Size = new System.Drawing.Size(298, 63);
 			this.lb_tisch_pos_x.TabIndex = 11;
 			this.lb_tisch_pos_x.Text = "Position X:";
 			// 
@@ -351,9 +362,9 @@
 			// 
 			this.lb_tisch_pos_y.AutoSize = true;
 			this.lb_tisch_pos_y.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.lb_tisch_pos_y.Location = new System.Drawing.Point(3, 252);
+			this.lb_tisch_pos_y.Location = new System.Drawing.Point(3, 189);
 			this.lb_tisch_pos_y.Name = "lb_tisch_pos_y";
-			this.lb_tisch_pos_y.Size = new System.Drawing.Size(298, 85);
+			this.lb_tisch_pos_y.Size = new System.Drawing.Size(298, 65);
 			this.lb_tisch_pos_y.TabIndex = 12;
 			this.lb_tisch_pos_y.Text = "Position Y:";
 			// 
@@ -373,7 +384,7 @@
 			// num_tisch_pos_x
 			// 
 			this.num_tisch_pos_x.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.num_tisch_pos_x.Location = new System.Drawing.Point(307, 171);
+			this.num_tisch_pos_x.Location = new System.Drawing.Point(307, 129);
 			this.num_tisch_pos_x.Name = "num_tisch_pos_x";
 			this.num_tisch_pos_x.Size = new System.Drawing.Size(298, 31);
 			this.num_tisch_pos_x.TabIndex = 10;
@@ -387,16 +398,16 @@
 			// 
 			this.lb_tisch_groesse_y.AutoSize = true;
 			this.lb_tisch_groesse_y.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.lb_tisch_groesse_y.Location = new System.Drawing.Point(3, 84);
+			this.lb_tisch_groesse_y.Location = new System.Drawing.Point(3, 63);
 			this.lb_tisch_groesse_y.Name = "lb_tisch_groesse_y";
-			this.lb_tisch_groesse_y.Size = new System.Drawing.Size(298, 84);
+			this.lb_tisch_groesse_y.Size = new System.Drawing.Size(298, 63);
 			this.lb_tisch_groesse_y.TabIndex = 8;
 			this.lb_tisch_groesse_y.Text = "Grösse Y:";
 			// 
 			// num_tisch_groesse_y
 			// 
 			this.num_tisch_groesse_y.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.num_tisch_groesse_y.Location = new System.Drawing.Point(307, 87);
+			this.num_tisch_groesse_y.Location = new System.Drawing.Point(307, 66);
 			this.num_tisch_groesse_y.Name = "num_tisch_groesse_y";
 			this.num_tisch_groesse_y.Size = new System.Drawing.Size(298, 31);
 			this.num_tisch_groesse_y.TabIndex = 9;
@@ -412,7 +423,7 @@
 			this.grp_raum.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.grp_raum.Location = new System.Drawing.Point(3, 3);
 			this.grp_raum.Name = "grp_raum";
-			this.grp_raum.Size = new System.Drawing.Size(613, 367);
+			this.grp_raum.Size = new System.Drawing.Size(613, 284);
 			this.grp_raum.TabIndex = 11;
 			this.grp_raum.TabStop = false;
 			this.grp_raum.Text = "Raum";
@@ -434,7 +445,7 @@
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tableLayoutPanel2.Size = new System.Drawing.Size(607, 337);
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(607, 254);
 			this.tableLayoutPanel2.TabIndex = 12;
 			// 
 			// lb_raum_groesse_x
@@ -443,14 +454,14 @@
 			this.lb_raum_groesse_x.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.lb_raum_groesse_x.Location = new System.Drawing.Point(3, 0);
 			this.lb_raum_groesse_x.Name = "lb_raum_groesse_x";
-			this.lb_raum_groesse_x.Size = new System.Drawing.Size(297, 84);
+			this.lb_raum_groesse_x.Size = new System.Drawing.Size(297, 63);
 			this.lb_raum_groesse_x.TabIndex = 1;
 			this.lb_raum_groesse_x.Text = "Grösse X:";
 			// 
 			// num_raum_groesse_y
 			// 
 			this.num_raum_groesse_y.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.num_raum_groesse_y.Location = new System.Drawing.Point(306, 87);
+			this.num_raum_groesse_y.Location = new System.Drawing.Point(306, 66);
 			this.num_raum_groesse_y.Name = "num_raum_groesse_y";
 			this.num_raum_groesse_y.Size = new System.Drawing.Size(298, 31);
 			this.num_raum_groesse_y.TabIndex = 4;
@@ -477,21 +488,60 @@
 			// 
 			this.lb_raum_groesse_y.AutoSize = true;
 			this.lb_raum_groesse_y.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.lb_raum_groesse_y.Location = new System.Drawing.Point(3, 84);
+			this.lb_raum_groesse_y.Location = new System.Drawing.Point(3, 63);
 			this.lb_raum_groesse_y.Name = "lb_raum_groesse_y";
-			this.lb_raum_groesse_y.Size = new System.Drawing.Size(297, 84);
+			this.lb_raum_groesse_y.Size = new System.Drawing.Size(297, 63);
 			this.lb_raum_groesse_y.TabIndex = 2;
 			this.lb_raum_groesse_y.Text = "Grösse Y:";
 			// 
 			// btn_ok
 			// 
 			this.btn_ok.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.btn_ok.Location = new System.Drawing.Point(622, 749);
+			this.btn_ok.Location = new System.Drawing.Point(622, 748);
 			this.btn_ok.Name = "btn_ok";
-			this.btn_ok.Size = new System.Drawing.Size(614, 77);
+			this.btn_ok.Size = new System.Drawing.Size(614, 78);
 			this.btn_ok.TabIndex = 17;
 			this.btn_ok.Text = "OK";
 			this.btn_ok.UseVisualStyleBackColor = true;
+			this.btn_ok.Click += new System.EventHandler(this.Btn_ok_Click);
+			// 
+			// tableLayoutPanel6
+			// 
+			this.tableLayoutPanel6.ColumnCount = 2;
+			this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel6.Controls.Add(this.btn_gast_hinzufuegen, 0, 0);
+			this.tableLayoutPanel6.Controls.Add(this.btn_gast_loeschen, 0, 0);
+			this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.tableLayoutPanel6.Location = new System.Drawing.Point(303, 368);
+			this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+			this.tableLayoutPanel6.RowCount = 1;
+			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel6.Size = new System.Drawing.Size(927, 78);
+			this.tableLayoutPanel6.TabIndex = 19;
+			// 
+			// btn_gast_loeschen
+			// 
+			this.btn_gast_loeschen.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.btn_gast_loeschen.Enabled = false;
+			this.btn_gast_loeschen.Location = new System.Drawing.Point(3, 3);
+			this.btn_gast_loeschen.Name = "btn_gast_loeschen";
+			this.btn_gast_loeschen.Size = new System.Drawing.Size(457, 72);
+			this.btn_gast_loeschen.TabIndex = 0;
+			this.btn_gast_loeschen.Text = "Gast löschen";
+			this.btn_gast_loeschen.UseVisualStyleBackColor = true;
+			this.btn_gast_loeschen.Click += new System.EventHandler(this.Btn_gast_loeschen_Click);
+			// 
+			// btn_gast_hinzufuegen
+			// 
+			this.btn_gast_hinzufuegen.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.btn_gast_hinzufuegen.Location = new System.Drawing.Point(466, 3);
+			this.btn_gast_hinzufuegen.Name = "btn_gast_hinzufuegen";
+			this.btn_gast_hinzufuegen.Size = new System.Drawing.Size(458, 72);
+			this.btn_gast_hinzufuegen.TabIndex = 1;
+			this.btn_gast_hinzufuegen.Text = "Gast hinzufügen";
+			this.btn_gast_hinzufuegen.UseVisualStyleBackColor = true;
+			this.btn_gast_hinzufuegen.Click += new System.EventHandler(this.Btn_gast_hinzufuegen_Click);
 			// 
 			// Konfig_Form
 			// 
@@ -524,6 +574,7 @@
 			this.tableLayoutPanel2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.num_raum_groesse_y)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.num_raum_groesse_x)).EndInit();
+			this.tableLayoutPanel6.ResumeLayout(false);
 			this.ResumeLayout(false);
 
         }
@@ -564,6 +615,9 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
 		private System.Windows.Forms.Button btn_ok;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+		private System.Windows.Forms.Button btn_gast_hinzufuegen;
+		private System.Windows.Forms.Button btn_gast_loeschen;
 	}
 }
 

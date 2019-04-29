@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Partyplaner
 {
 	class Gast
 	{
-		public string name { get; private set; }
-		public string beruf { get; private set; }
+		public string name { get; set; }
+		public string beruf { get; set; }
 		public Point position { get; set; }
 		public Dictionary<string, int> wunschabstaende { get; private set; }
 
