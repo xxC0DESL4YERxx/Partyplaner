@@ -30,6 +30,9 @@
         {
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.grp_gaeste = new System.Windows.Forms.GroupBox();
+			this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+			this.btn_gast_hinzufuegen = new System.Windows.Forms.Button();
+			this.btn_gast_loeschen = new System.Windows.Forms.Button();
 			this.grp_gast = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
 			this.lb_wunschabstand = new System.Windows.Forms.Label();
@@ -62,11 +65,9 @@
 			this.num_raum_groesse_x = new System.Windows.Forms.NumericUpDown();
 			this.lb_raum_groesse_y = new System.Windows.Forms.Label();
 			this.btn_ok = new System.Windows.Forms.Button();
-			this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-			this.btn_gast_loeschen = new System.Windows.Forms.Button();
-			this.btn_gast_hinzufuegen = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.grp_gaeste.SuspendLayout();
+			this.tableLayoutPanel6.SuspendLayout();
 			this.grp_gast.SuspendLayout();
 			this.tableLayoutPanel5.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.num_wunschabstand)).BeginInit();
@@ -83,7 +84,6 @@
 			this.tableLayoutPanel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.num_raum_groesse_y)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.num_raum_groesse_x)).BeginInit();
-			this.tableLayoutPanel6.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tableLayoutPanel1
@@ -118,6 +118,44 @@
 			this.grp_gaeste.TabIndex = 16;
 			this.grp_gaeste.TabStop = false;
 			this.grp_gaeste.Text = "Gäste";
+			// 
+			// tableLayoutPanel6
+			// 
+			this.tableLayoutPanel6.ColumnCount = 2;
+			this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel6.Controls.Add(this.btn_gast_hinzufuegen, 0, 0);
+			this.tableLayoutPanel6.Controls.Add(this.btn_gast_loeschen, 0, 0);
+			this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.tableLayoutPanel6.Location = new System.Drawing.Point(303, 368);
+			this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+			this.tableLayoutPanel6.RowCount = 1;
+			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel6.Size = new System.Drawing.Size(927, 78);
+			this.tableLayoutPanel6.TabIndex = 19;
+			// 
+			// btn_gast_hinzufuegen
+			// 
+			this.btn_gast_hinzufuegen.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.btn_gast_hinzufuegen.Location = new System.Drawing.Point(466, 3);
+			this.btn_gast_hinzufuegen.Name = "btn_gast_hinzufuegen";
+			this.btn_gast_hinzufuegen.Size = new System.Drawing.Size(458, 72);
+			this.btn_gast_hinzufuegen.TabIndex = 1;
+			this.btn_gast_hinzufuegen.Text = "Gast hinzufügen";
+			this.btn_gast_hinzufuegen.UseVisualStyleBackColor = true;
+			this.btn_gast_hinzufuegen.Click += new System.EventHandler(this.Btn_gast_hinzufuegen_Click);
+			// 
+			// btn_gast_loeschen
+			// 
+			this.btn_gast_loeschen.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.btn_gast_loeschen.Enabled = false;
+			this.btn_gast_loeschen.Location = new System.Drawing.Point(3, 3);
+			this.btn_gast_loeschen.Name = "btn_gast_loeschen";
+			this.btn_gast_loeschen.Size = new System.Drawing.Size(457, 72);
+			this.btn_gast_loeschen.TabIndex = 0;
+			this.btn_gast_loeschen.Text = "Gast löschen";
+			this.btn_gast_loeschen.UseVisualStyleBackColor = true;
+			this.btn_gast_loeschen.Click += new System.EventHandler(this.Btn_gast_loeschen_Click);
 			// 
 			// grp_gast
 			// 
@@ -505,55 +543,19 @@
 			this.btn_ok.UseVisualStyleBackColor = true;
 			this.btn_ok.Click += new System.EventHandler(this.Btn_ok_Click);
 			// 
-			// tableLayoutPanel6
-			// 
-			this.tableLayoutPanel6.ColumnCount = 2;
-			this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel6.Controls.Add(this.btn_gast_hinzufuegen, 0, 0);
-			this.tableLayoutPanel6.Controls.Add(this.btn_gast_loeschen, 0, 0);
-			this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.tableLayoutPanel6.Location = new System.Drawing.Point(303, 368);
-			this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-			this.tableLayoutPanel6.RowCount = 1;
-			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel6.Size = new System.Drawing.Size(927, 78);
-			this.tableLayoutPanel6.TabIndex = 19;
-			// 
-			// btn_gast_loeschen
-			// 
-			this.btn_gast_loeschen.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.btn_gast_loeschen.Enabled = false;
-			this.btn_gast_loeschen.Location = new System.Drawing.Point(3, 3);
-			this.btn_gast_loeschen.Name = "btn_gast_loeschen";
-			this.btn_gast_loeschen.Size = new System.Drawing.Size(457, 72);
-			this.btn_gast_loeschen.TabIndex = 0;
-			this.btn_gast_loeschen.Text = "Gast löschen";
-			this.btn_gast_loeschen.UseVisualStyleBackColor = true;
-			this.btn_gast_loeschen.Click += new System.EventHandler(this.Btn_gast_loeschen_Click);
-			// 
-			// btn_gast_hinzufuegen
-			// 
-			this.btn_gast_hinzufuegen.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.btn_gast_hinzufuegen.Location = new System.Drawing.Point(466, 3);
-			this.btn_gast_hinzufuegen.Name = "btn_gast_hinzufuegen";
-			this.btn_gast_hinzufuegen.Size = new System.Drawing.Size(458, 72);
-			this.btn_gast_hinzufuegen.TabIndex = 1;
-			this.btn_gast_hinzufuegen.Text = "Gast hinzufügen";
-			this.btn_gast_hinzufuegen.UseVisualStyleBackColor = true;
-			this.btn_gast_hinzufuegen.Click += new System.EventHandler(this.Btn_gast_hinzufuegen_Click);
-			// 
 			// Konfig_Form
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1239, 829);
 			this.Controls.Add(this.tableLayoutPanel1);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
 			this.Name = "Konfig_Form";
 			this.Text = "Konfiguration";
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.grp_gaeste.ResumeLayout(false);
+			this.tableLayoutPanel6.ResumeLayout(false);
 			this.grp_gast.ResumeLayout(false);
 			this.tableLayoutPanel5.ResumeLayout(false);
 			this.tableLayoutPanel5.PerformLayout();
@@ -574,7 +576,6 @@
 			this.tableLayoutPanel2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.num_raum_groesse_y)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.num_raum_groesse_x)).EndInit();
-			this.tableLayoutPanel6.ResumeLayout(false);
 			this.ResumeLayout(false);
 
         }
