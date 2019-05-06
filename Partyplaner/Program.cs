@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ImportExportHelper;
 
 namespace Partyplaner
 {
@@ -14,9 +15,9 @@ namespace Partyplaner
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Konfig_Form());
+           ImportExportHelper ImportHelper = ImportExportHelper.getImportExportHelper();
+           
+           printf(ImportHelper.getGuest("Marco Polo").beruf);
         }
     }
 }
