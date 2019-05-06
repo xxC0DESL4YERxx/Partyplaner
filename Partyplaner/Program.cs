@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ImportExportHelper;
+using Partyplaner;
 
 namespace Partyplaner
 {
@@ -17,7 +17,7 @@ namespace Partyplaner
         {
            ImportExportHelper ImportHelper = ImportExportHelper.getImportExportHelper();
            
-           printf(ImportHelper.getGuest("Marco Polo").beruf);
+           Console.WriteLine(ImportHelper.getGuest("Marco Polo").beruf);
         }
     }
 }
