@@ -14,10 +14,15 @@ namespace Partyplaner
         int gameHeight;
         int tileWidth;
         int tileHeight;
+        ImportExportHelper DatenManager;
+        /// <summary>
+        /// Erstellt ei Objekt
+        /// </summary>
+        /// <param name="g">Von Control.CreateGraphics()</param>
         public Darstellung(Graphics g)
         {
             this.g = g;
-
+            DatenManager = ImportExportHelper.getImportExportHelper();
         }
         /*
         public void ZeichneSpielfeld()
@@ -57,7 +62,11 @@ namespace Partyplaner
             }
         }
         */
-        public void DrawPartyIndex(Graphics g, List<Point> points)
+        /// <summary>
+        /// Zeichnet die Statistik als Graphen
+        /// </summary>
+        /// <param name="points">Die Befindlichkeitswerte + Messpunktunkte</param>
+        public void DrawPartyIndex(List<Point> points)
         {
             Point grosse = new Point(200, 100);
             Pen pGraph = new Pen(Color.Black, 1);

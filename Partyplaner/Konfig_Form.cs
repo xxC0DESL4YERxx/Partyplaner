@@ -10,6 +10,7 @@ namespace Partyplaner
 {
 	public partial class Konfig_Form : Form
     {
+		// TODO Konfiguration: Pfad dynamisch machen
 		private const string XML_PATH = "config.xml";
 		private BindingList<Gast> gaesteliste = new BindingList<Gast>();
 
@@ -133,6 +134,7 @@ namespace Partyplaner
 			foreach (Gast otherGast in list_gaesteliste.Items)
 			{
 				var wunschabstandNode = new XElement("wunschabstand");
+				// TODO Konfiguration: Exception, wenn Wunschabstand fehlt?
 				int wunschabstand = 0;
 				if (aGast.wunschabstaende.ContainsKey(otherGast.name))
 				{
@@ -334,75 +336,8 @@ namespace Partyplaner
 		/// <param name="e">Eventparameter</param>
 		private void Btn_ok_Click(object sender, EventArgs e)
 		{
-			if (Validate())
-			{
-				SaveUiToXml();
-				Close();
-			}
-		}
-
-		/// <summary>
-		/// Validiert die Oberflächenwerte und gibt Fehlermeldungen, wenn nötig.
-		/// </summary>
-		/// <returns>True, wenn die Validierung erfolgreich war, sonst false.</returns>
-		private new bool Validate()
-		{
-			var raumgroesseX = (int)num_raum_groesse_x.Value;
-			var raumgroesseY = (int)num_raum_groesse_y.Value;
-			var tischgroesseX = (int)num_tisch_groesse_x.Value;
-			var tischgroesseY = (int)num_tisch_groesse_y.Value;
-			var tischpositionX = (int)num_tisch_pos_x.Value;
-			var tischpositionY = (int)num_tisch_pos_y.Value;
-
-			var raum = new Rectangle(new Point(0, 0), new Size(raumgroesseX, raumgroesseY));
-			// Verfügbare Raumfelder prüfen
-			if (gaesteliste.Count > raum.Width * raum.Height)
-			{
-				ShowFehlermeldung("Die Anzahl Gäste überschreitet die Menge verfügbarer Raumfelder!");
-				return false;
-			}
-
-			// Tisch validieren
-			var tisch = new Rectangle(new Point(tischpositionX, tischpositionY), new Size(tischgroesseX, tischgroesseY));
-			if (!raum.Contains(tisch))
-			{
-				ShowFehlermeldung("Der Tisch ist mindestens teilweise ausserhalb des Raumes!");
-				return false;
-			}
-
-			// Gäste validieren
-			var positionen = new HashSet<Point>();
-			foreach (var gast in gaesteliste)
-			{
-				// Startposition validieren
-				if (!raum.Contains(gast.position))
-				{
-					ShowFehlermeldung($"Die Startposition von {gast} befindet sich ausserhalb des Raumes!");
-					return false;
-				}
-				if (tisch.Contains(gast.position))
-				{
-					ShowFehlermeldung($"{gast} steht auf dem Tisch!");
-					return false;
-				}
-				if (positionen.Contains(gast.position))
-				{
-					ShowFehlermeldung($"{gast} hat dieselbe Startposition wie ein anderer Gast!");
-					return false;
-				}
-				positionen.Add(gast.position);
-			}
-
-			return true;
-		}
-
-		/// <summary>
-		/// Zeigt eine Fehlermeldung mit übergebenem Text.
-		/// </summary>
-		/// <param name="aFehler">Die anzuzeigende Meldung.</param>
-		private void ShowFehlermeldung(string aFehler)
-		{
-			MessageBox.Show(aFehler, "Inkonsistente Daten!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			SaveUiToXml();
+			Close();
 		}
 
 		/// <summary>
