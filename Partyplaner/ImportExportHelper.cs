@@ -3,7 +3,7 @@ namespace Partyplaner
     public class ImportExportHelper
     {
         private const string XML_PATH = "config.xml";
-        public BindingList<Gast> Gaesteliste;
+        public Dictionary<string, Gast> gaesteliste = new Dictionary<string, Gast>();
         private ImportExportHelper importExportHelper;
         private Tuple<int,int> tischGroesse { get; set; }
         private Tuple<int,int> tischPosition { get; set; }
@@ -63,7 +63,8 @@ namespace Partyplaner
                     var abstandDistanz = Convert.ToInt32(eachWunschabstandNode.Attribute("distanz").Value);
                     wunschabstaende.Add(abstandName, abstandDistanz);
                 }
-                gaesteliste.Add(new Gast(name, beruf, new Point(position.Item1, position.Item2), wunschabstaende));
+                // Hier könnte man noch eine If-Prüfung einbauen ob der Gast schon existiert.
+                gaesteliste.add(name, new Gast(name, beruf, new Point(position.Item1, position.Item2), wunschabstaende));
             }
 
             raumGroesse = ExtractXYDataFromNode(raumGroesseNode);
@@ -78,7 +79,7 @@ namespace Partyplaner
         /// <returns>Den gesuchten Gast.</returns>
         public Gast getGast(string guestName)
         {
-            foreach (Gast eachGast in list_gaesteliste.Items)
+            foreach (Gast eachGast in gaesteliste.Values)
             {
                 if(eachGast.name == guestName)
                 {
