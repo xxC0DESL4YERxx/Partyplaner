@@ -1,18 +1,23 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Xml.Linq;
+
 namespace Partyplaner
 {
     public class ImportExportHelper
     {
         private const string XML_PATH = "config.xml";
         public Dictionary<string, Gast> gaesteliste = new Dictionary<string, Gast>();
-        private ImportExportHelper importExportHelper;
+        private static ImportExportHelper importExportHelper;
         private Tuple<int,int> tischGroesse { get; set; }
         private Tuple<int,int> tischPosition { get; set; }
         private Tuple<int, int> raumGroesse { get; set; }
 
-        /// <summary>
-        /// Der Konstruktor der Klasse.
-        /// </summary>
-        private ImportExportHelper();
+		/// <summary>
+		/// Der Konstruktor der Klasse.
+		/// </summary>
+		private ImportExportHelper() { }
 
         /// <summary>
         /// Liefert die Instanz der Klasse.
@@ -22,7 +27,7 @@ namespace Partyplaner
         {
             if (importExportHelper == null)
             {
-                importExportHelper = new ImportExport();
+                importExportHelper = new ImportExportHelper();
             }
             return importExportHelper;
         }
@@ -77,7 +82,7 @@ namespace Partyplaner
         /// </summary>
         /// <param name="guestName"> Der Name des zu suchenden Gast.</param>
         /// <returns>Den gesuchten Gast.</returns>
-        public Gast getGast(string guestName)
+        public Gast GetGast(string guestName)
         {
             foreach (Gast eachGast in gaesteliste.Values)
             {
@@ -86,6 +91,7 @@ namespace Partyplaner
                     return eachGast;
                 }
             }
+			return null;
         }
 
         /// <summary>
