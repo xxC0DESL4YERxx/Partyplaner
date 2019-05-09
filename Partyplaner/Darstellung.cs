@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Partyplaner
 {
@@ -12,8 +9,8 @@ namespace Partyplaner
         Graphics g;
         int gameWidth;
         int gameHeight;
-        int tileWidth;
-        int tileHeight;
+        const int TILEWIDTH = 50;
+        const int TILEHEIGHT = 50;
         ImportExportHelper DatenManager;
         /// <summary>
         /// Erstellt ei Objekt
@@ -24,44 +21,45 @@ namespace Partyplaner
             this.g = g;
             DatenManager = ImportExportHelper.getImportExportHelper();
         }
-        /*
+
         public void ZeichneSpielfeld()
         {
-            List<Point> tisch = DatenManager.GetTisch();
-            SpielFeld spielFeld = DatenManager.GetSpielfeld();
-            List<Point> personen = DatenManager.GetPersonen();
-            gameWidth = spielFeld.GameSize.X;
-            gameHeight = spielFeld.GameSize.Y;
-            tileHeight = spielFeld.TileSize.Y;
-            tileWidth = spielFeld.TileSize.X;
+            Point tischPos = GetValueFromTupe(DatenManager.GetTischPosition());
+            Point tischSize = GetValueFromTupe(DatenManager.GetTischGrosse());
+            Point spielFeld = GetValueFromTupe(DatenManager.GetRaum());
+
+            Dictionary<string, Gast> personen = DatenManager.GetGaesteListe();
+            gameWidth = spielFeld.X;
+            gameHeight = spielFeld.Y;
+
             Pen p = new Pen(Color.Black, 1);
             g.Clear(Color.FromKnownColor(KnownColor.Control));
             g.FillRectangle(new Pen(Color.White, 1).Brush, new Rectangle(0, 0, gameWidth, gameHeight));
             Point startPoint = new Point(0, 0);
             Point endPoint = new Point(0, 0);
-            for (int x = 0; x <= gameWidth; x += tileWidth)
+            for (int x = 0; x <= gameWidth; x += TILEWIDTH)
             {
                 startPoint = new Point(x, 0);
                 endPoint = new Point(startPoint.X, startPoint.Y + gameHeight);
                 g.DrawLine(p, startPoint, endPoint);
             }
-            for (int y = 0; y <= gameHeight; y += tileHeight)
+            for (int y = 0; y <= gameHeight; y += TILEHEIGHT)
             {
                 startPoint = new Point(0, y);
                 endPoint = new Point(startPoint.X + gameWidth, startPoint.Y);
                 g.DrawLine(p, startPoint, endPoint);
             }
-            foreach (Point point in tisch)
-            {
-                g.FillRectangle(new Pen(Color.Brown, 1).Brush, new Rectangle(point.X * tileWidth, point.Y * tileHeight, tileWidth, tileHeight));
-            }
 
-            foreach (Point point in personen)
+            g.FillRectangle(new Pen(Color.Brown, 1).Brush, new Rectangle(tischPos.X, tischPos.Y, tischSize.X, tischSize.Y));
+
+
+            foreach (var pers in personen)
             {
-                g.FillRectangle(new Pen(Color.Orange, 1).Brush, new Rectangle(point.X * tileWidth, point.Y * tileHeight, tileWidth, tileHeight));
+                Point point = pers.Value.position;
+                g.FillRectangle(new Pen(Color.Orange, 1).Brush, new Rectangle(point.X* TILEWIDTH, point.Y * TILEHEIGHT, TILEWIDTH, TILEHEIGHT));
             }
         }
-        */
+
         /// <summary>
         /// Zeichnet die Statistik als Graphen
         /// </summary>
@@ -81,6 +79,11 @@ namespace Partyplaner
             }
             if (points.Count > 0)
                 g.DrawLines(pGraph, points.ToArray());
+        }
+
+        private Point GetValueFromTupe(Tuple<int, int> tuple)
+        {
+            return new Point(tuple.Item1, tuple.Item2);
         }
     }
 }
