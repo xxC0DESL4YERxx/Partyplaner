@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace Partyplaner
 {
-	class Gast
+	public class Gast
 	{
 		public string name { get; set; }
 		public string beruf { get; set; }

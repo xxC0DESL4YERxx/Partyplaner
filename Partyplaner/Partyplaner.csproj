@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Befindlichkeit.cs" />
     <Compile Include="Darstellung.cs" />
     <Compile Include="Gast.cs" />
     <Compile Include="ImportExportHelper.cs" />
