@@ -115,6 +115,7 @@ namespace Partyplaner
 			raumNode.Add(tischNode);
 
 			configRoot.Save(XML_PATH);
+            Close();
 		}
 
 		/// <summary>
