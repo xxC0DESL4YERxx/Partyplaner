@@ -64,7 +64,7 @@ namespace Partyplaner
                     wunschabstaende.Add(abstandName, abstandDistanz);
                 }
                 // Hier könnte man noch eine If-Prüfung einbauen ob der Gast schon existiert.
-                gaesteliste.add(name, new Gast(name, beruf, new Point(position.Item1, position.Item2), wunschabstaende));
+                gaesteliste.Add(name, new Gast(name, beruf, new Point(position.Item1, position.Item2), wunschabstaende));
             }
 
             raumGroesse = ExtractXYDataFromNode(raumGroesseNode);
