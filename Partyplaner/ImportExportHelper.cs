@@ -14,10 +14,18 @@ namespace Partyplaner
         private Tuple<int,int> tischPosition { get; set; }
         private Tuple<int, int> raumGroesse { get; set; }
 
+        private static bool initializied = false;
+
 		/// <summary>
 		/// Der Konstruktor der Klasse.
 		/// </summary>
-		private ImportExportHelper() { }
+		private ImportExportHelper()
+        {
+
+            Konfig_Form konfigForm = new Konfig_Form();
+            konfigForm.FormClosed += loadXMLValues;
+            konfigForm.ShowDialog();
+        }
 
         /// <summary>
         /// Liefert die Instanz der Klasse.
@@ -28,6 +36,10 @@ namespace Partyplaner
             if (importExportHelper == null)
             {
                 importExportHelper = new ImportExportHelper();
+                while(!initializied)
+                {
+
+                }
             }
             return importExportHelper;
         }
@@ -35,7 +47,7 @@ namespace Partyplaner
         /// <summary>
         /// Liest die relevanten Daten aus der XML Datei.
         /// </summary>
-        private void loadXMLValues()
+        private void loadXMLValues(object sender, EventArgs e)
         {
             // Extrahieren der Daten
             XElement configRoot = null;
@@ -69,12 +81,14 @@ namespace Partyplaner
                     wunschabstaende.Add(abstandName, abstandDistanz);
                 }
                 // Hier könnte man noch eine If-Prüfung einbauen ob der Gast schon existiert.
-                gaesteliste.Add(name, new Gast(name, beruf, new Point(position.Item1, position.Item2), wunschabstaende));
+                gaesteliste.Add(name, new Gast(name, beruf, new System.Drawing.Point(position.Item1, position.Item2), wunschabstaende));
             }
 
             raumGroesse = ExtractXYDataFromNode(raumGroesseNode);
             tischGroesse = ExtractXYDataFromNode(raumTischGroesseNode);
             tischPosition = ExtractXYDataFromNode(raumTischPositionNode);
+
+            initializied = true;
         }
 
         /// <summary>
@@ -92,6 +106,46 @@ namespace Partyplaner
                 }
             }
 			return null;
+        }
+
+        public Dictionary<string, Gast> GetGaesteListe()
+        {
+            return gaesteliste;
+        }
+
+        public Tuple<int, int> GetTischGrosse()
+        {
+            return tischGroesse;
+        }
+
+        public Tuple<int, int> GetTischPosition()
+        {
+            return tischPosition;
+        }
+
+        public Tuple<int,int> GetRaum()
+        {
+            return raumGroesse;
+        }
+
+        public int GetAnzahlGaeste()
+        {
+            return gaesteliste.Count;
+        }
+
+        public System.Drawing.Point GetAktuellePosition(string name)
+        {
+            return GetGast(name).position;
+        }
+
+        public List<int> GetBefindlichkeiten()
+        {
+            List<int> befindlichkeiten = new List<int>();
+            foreach (Gast eachGast in gaesteliste.Values)
+            {
+                befindlichkeiten.Add(eachGast.befindlichkeit);
+            }
+            return befindlichkeiten;
         }
 
         /// <summary>

@@ -17,7 +17,7 @@ namespace Partyplaner
         {
            ImportExportHelper ImportHelper = ImportExportHelper.getImportExportHelper();
            
-           Console.WriteLine(ImportHelper.getGuest("Marco Polo").beruf);
+           Console.WriteLine(ImportHelper.GetGast("Marco Polo").beruf);
         }
     }
 }

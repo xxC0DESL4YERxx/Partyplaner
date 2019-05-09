@@ -8,6 +8,7 @@ namespace Partyplaner
 		public string name { get; set; }
 		public string beruf { get; set; }
 		public Point position { get; set; }
+        public int befindlichkeit { get; set; }
 		public Dictionary<string, int> wunschabstaende { get; private set; }
 
 		public Gast(string aName, string aBeruf, Point aPosition, Dictionary<string, int> someWunschabstaende)
