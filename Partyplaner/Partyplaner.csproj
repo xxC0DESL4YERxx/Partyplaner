@@ -64,6 +64,7 @@
     <Compile Include="Spielfeld.Designer.cs">
       <DependentUpon>Spielfeld.cs</DependentUpon>
     </Compile>
+    <Compile Include="statistik.cs" />
     <EmbeddedResource Include="Konfig_Form.resx">
       <DependentUpon>Konfig_Form.cs</DependentUpon>
     </EmbeddedResource>
