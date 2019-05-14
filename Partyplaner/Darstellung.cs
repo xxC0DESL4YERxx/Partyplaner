@@ -29,6 +29,7 @@ namespace Partyplaner
 
         public void ZeichneSpielfeld()
         {
+          
             Point tischPos = GetValueFromTupe(DatenManager.GetTischPosition());
             Point tischSize = GetValueFromTupe(DatenManager.GetTischGrosse());
             Point spielFeld = GetValueFromTupe(DatenManager.GetRaum());
@@ -38,7 +39,7 @@ namespace Partyplaner
             gameHeight = spielFeld.Y * TILEHEIGHT;
 
             Pen p = new Pen(Color.Black, 1);
-            g.Clear(Color.FromKnownColor(KnownColor.Control));
+            //g.Clear(Color.FromKnownColor(KnownColor.Control));
             g.FillRectangle(new Pen(Color.White, 1).Brush, new Rectangle(0, 0, gameWidth, gameHeight));
             Point startPoint = new Point(0, 0);
             Point endPoint = new Point(0, 0);
@@ -74,16 +75,18 @@ namespace Partyplaner
 
             Point grosse = new Point(STATISTIKWIDTH, STATISTIKHEIGHT);
             Pen pGraph = new Pen(Color.Black, 1);
+            Point GraphPos = new Point(statistikPosition.X, STATISTIKHEIGHT + statistikPosition.Y);
+            g.DrawLine(pGraph, new Point(statistikPosition.X, statistikPosition.Y), new Point(statistikPosition.X, statistikPosition.Y + STATISTIKHEIGHT));
+            g.DrawLine(pGraph, new Point(statistikPosition.X, statistikPosition.Y + STATISTIKHEIGHT), new Point(statistikPosition.X + STATISTIKWIDTH, statistikPosition.Y + STATISTIKHEIGHT));
 
-            g.DrawLine(pGraph, new Point(5, 5), new Point(5, 95));
-            g.DrawLine(pGraph, new Point(5, 95), new Point(195, 95));
-
-            for (int i = 0; i < points.Count; i++)
-            {
-                Point p = points[i];
-                points[i] = new Point((p.X + 1) * 5, p.Y);
-            }
             if (points.Count > 0)
+            {
+                Point p = points[points.Count - 1];
+                points[points.Count - 1] = new Point((p.X + GraphPos.X), GraphPos.Y - p.Y);
+            }
+
+            
+            if (points.Count > 1)
                 g.DrawLines(pGraph, points.ToArray());
         }
 
@@ -91,9 +94,11 @@ namespace Partyplaner
         {
             return new Point(tuple.Item1, tuple.Item2);
         }
-        public void ResizeGameField(Spielfeld spielfeld)
+        public void ResizeGameField(Spielfeld spielfeld, Tuple<int, int> raum)
         {
             //Passe Form auf Spielfeldgröße an
+            gameWidth = raum.Item1;
+            gameHeight = raum.Item2;
             if (CalculateWidth() > FORMWIDTH)
             {
                 spielfeld.Size = new Size(CalculateWidth(), FORMHEIGHT);
@@ -110,7 +115,7 @@ namespace Partyplaner
                     spielfeld.Size = new Size(FORMWIDTH, CalculateHeight());
                 }
             }
-            statistikPosition = new Point(spielfeld.Size.Width - STATISTIKWIDTH,spielfeld.Size.Height - STATISTIKWIDTH);
+            statistikPosition = new Point(CalculateWidth() - STATISTIKWIDTH +50, 10);
             g = spielfeld.CreateGraphics();
         }
 

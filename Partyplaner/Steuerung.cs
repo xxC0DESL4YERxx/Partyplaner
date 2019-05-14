@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Partyplaner
 {
@@ -17,13 +18,17 @@ namespace Partyplaner
         List<Point> tisch = new List<Point>();
         Tuple<int, int> raum;
         Statistik statistik;
+        List<Point> StatsToGraph = new List<Point>();
+        int iteration = 0;
+        bool firstrun = true;
         public Steuerung(Spielfeld spielfeld)
         {
             importExportHelper = ImportExportHelper.getImportExportHelper();
             dar = new Darstellung(spielfeld.CreateGraphics());
             this.spielfeld = spielfeld;
-            dar.ResizeGameField(spielfeld);
+            dar.ResizeGameField(spielfeld,importExportHelper.GetRaum());
             statistik = new Statistik();
+            
         }
 
         public void Run()
@@ -49,13 +54,25 @@ namespace Partyplaner
 
         public void Update()
         {
-            foreach (Gast person in liste.Values)
+            List<Gast> gaeste = liste.Values.ToList();
+            bool redraw = false;
+            for(int i = 0; i < gaeste.Count; i++)
             {
-                BewegePerson(person, liste, tisch, raum);
+                Point pos = gaeste[i].position;
+                BewegePerson(gaeste[i], liste, tisch, raum);
+                importExportHelper.gaesteliste[gaeste[i].name] = gaeste[i];
+                if (pos != gaeste[i].position)
+                    redraw = true;
+            }
+            StatsToGraph.Add(new Point(iteration, (int)statistik.GetPartyindex()));
+            iteration++;
+            if (redraw || firstrun)
+            {
+                dar.ZeichneSpielfeld();
+                firstrun = false;
             }
             
-            float partyIndex = statistik.GetPartyindex();
-            dar.ZeichneSpielfeld();
+            dar.DrawPartyIndex(StatsToGraph);
         }
 
         public void BewegePerson(Gast person, Dictionary<string, Gast> liste, List<Point> tisch, Tuple<int, int> raum)

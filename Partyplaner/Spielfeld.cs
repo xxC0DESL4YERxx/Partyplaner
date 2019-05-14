@@ -22,6 +22,7 @@ namespace Partyplaner
         {
             steuerung = new Steuerung(this);
             steuerung.Run();
+            steuerung.Update();
             timer1.Start();
         }
 
