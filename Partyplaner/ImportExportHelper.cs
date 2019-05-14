@@ -95,6 +95,7 @@ namespace Partyplaner
         /// <summary>
 		/// Speichert den Inhalt der Oberflächenfelder in die XML-Datei.
 		/// </summary>
+        /*
 		private void SaveUiToXml()
 		{
 			var configRoot = new XElement("konfiguration");
@@ -119,7 +120,7 @@ namespace Partyplaner
 			configRoot.Save(XML_PATH);
             Close();
 		}
-
+        */
         public void setTischPosition(int x, int y) 
         {
             tischPosition = new Tuple<int, int>(x,y);

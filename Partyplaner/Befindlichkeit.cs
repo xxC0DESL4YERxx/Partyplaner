@@ -12,10 +12,11 @@ namespace Partyplaner
         /// <param name="person"></param>
         /// <param name="gaesteliste"></param>
         /// <returns></returns>
-        public static Dictionary<Point, double> GetBefindlichkeit(Gast person, List<Gast> gaesteliste)
+        public static Dictionary<Point, double> GetBefindlichkeit(Gast person, List<Gast> gaesteliste, List<Point> tisch)
         {
             Dictionary<Point, double> befindlichkeiten = new Dictionary<Point, double>();
             double sum = 0;
+            double befind = 0;
             for (int x = -1; x <= 1; x++)
             {
                 for (int y = -1; y <= 1; y++)
@@ -27,9 +28,28 @@ namespace Partyplaner
                         {
                             //Berechne Abstand zur aktuell anderen Person 
                             double abstand = GetAbstand(person.position.X + x, person.position.Y + y, otherpers.position);
+                            double sumTisch = 0;
+                            foreach (Point p in tisch)
+                            {
+                                double abstandTisch = GetAbstand(person.position.X, person.position.Y, p);
+                                sumTisch += abstandTisch;
+                            }
+                            sumTisch = sumTisch / tisch.Count;
                             int wabs = 0;
                             //Hole den W-Abstand und subtrahiere diesen von tatsächlichen Abstand
                             person.wunschabstaende.TryGetValue(otherpers.name, out wabs);
+                           
+                            if (abstand - wabs <= 0)
+                                befind = 0;
+                            else
+                                befind += (abstand - wabs);
+                            if (befind > 0)
+                            {
+                                if (befind - sumTisch <= 0)
+                                    befind = 0;
+                                else
+                                    befind += sumTisch;
+                            }
                             sum += abstand - wabs;
                         }
                     }

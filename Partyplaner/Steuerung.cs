@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Partyplaner
 {
@@ -26,9 +23,9 @@ namespace Partyplaner
             importExportHelper = ImportExportHelper.getImportExportHelper();
             dar = new Darstellung(spielfeld.CreateGraphics());
             this.spielfeld = spielfeld;
-            dar.ResizeGameField(spielfeld,importExportHelper.GetRaum());
+            dar.ResizeGameField(spielfeld, importExportHelper.GetRaum());
             statistik = new Statistik();
-            
+
         }
 
         public void Run()
@@ -56,7 +53,7 @@ namespace Partyplaner
         {
             List<Gast> gaeste = liste.Values.ToList();
             bool redraw = false;
-            for(int i = 0; i < gaeste.Count; i++)
+            for (int i = 0; i < gaeste.Count; i++)
             {
                 Point pos = gaeste[i].position;
                 BewegePerson(gaeste[i], liste, tisch, raum);
@@ -71,15 +68,15 @@ namespace Partyplaner
                 dar.ZeichneSpielfeld();
                 firstrun = false;
             }
-            
+
             dar.DrawPartyIndex(StatsToGraph);
         }
 
         public void BewegePerson(Gast person, Dictionary<string, Gast> liste, List<Point> tisch, Tuple<int, int> raum)
         {
             //Die Befindlichkeiten der umliegenden Punkte werden abgerufen
-            
-            Dictionary<Point, double> befi = Befindlichkeit.GetBefindlichkeit(person, liste.Values.ToList());
+
+            Dictionary<Point, double> befi = Befindlichkeit.GetBefindlichkeit(person, liste.Values.ToList(), tisch);
 
             //Nicht zugängliche Punkte werden ausgeschlossen
             for (int y = -1; y <= 1; y++)
@@ -91,7 +88,7 @@ namespace Partyplaner
                     Point pakt = new Point(xakt, yakt);
 
                     //Prüfung auf Wand
-                    if(xakt <0 || yakt < 0 || xakt> raum.Item1 || yakt>raum.Item2)
+                    if (xakt < 0 || yakt < 0 || xakt > raum.Item1 || yakt > raum.Item2)
                     {
                         befi[pakt] = 999;
                         continue;
@@ -107,7 +104,7 @@ namespace Partyplaner
                         }
                     }
 
-                    if(befi[pakt] == 999) { continue; }
+                    if (befi[pakt] == 999) { continue; }
 
                     //Prüfung, ob Punkt bereits besetzt ist
                     foreach (Gast gast in liste.Values)
@@ -122,10 +119,12 @@ namespace Partyplaner
             }
 
             //der kleinste Wert der Befindlichkeiten ist gesucht
-            var keyAndValue = befi.OrderBy(kvp => kvp.Value).First();
-            
+
+            var keyAndValue = befi.OrderBy(kvp => kvp.Value).First();   
+                person.position = keyAndValue.Key;
+
             //Schließlich wird die Person auf die neue Position gesetzt
-            person.position = keyAndValue.Key;
+         
 
         }
     }

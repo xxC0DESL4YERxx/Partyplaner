@@ -9,8 +9,8 @@ namespace Partyplaner
         Graphics g;
         int gameWidth;
         int gameHeight;
-        public const int TILEWIDTH = 25;
-        public const int TILEHEIGHT = 25;
+        public const int TILEWIDTH = 10;
+        public const int TILEHEIGHT = 10;
         ImportExportHelper DatenManager;
         public const int FORMWIDTH = 500;
         public const int FORMHEIGHT = 500;
