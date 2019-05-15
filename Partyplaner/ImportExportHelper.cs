@@ -92,35 +92,6 @@ namespace Partyplaner
             initializied = true;
         }
 
-        /// <summary>
-		/// Speichert den Inhalt der Oberflächenfelder in die XML-Datei.
-		/// </summary>
-        /*
-		private void SaveUiToXml()
-		{
-			var configRoot = new XElement("konfiguration");
-			// Gästeliste erzeugen
-			var gaestelisteNode = new XElement("gaesteliste");
-			configRoot.Add(gaestelisteNode);
-
-			foreach (Gast eachGast in gaesteliste)
-			{
-				gaestelisteNode.Add(CreateXmlNodeForGast(eachGast));
-			}
-			// Raum erzeugen
-			var raumNode = new XElement("raum");
-			configRoot.Add(raumNode);
-			raumNode.Add(CreateXYNode("groesse", raumGroesse.Item1, raumGroesse.Item2));
-
-			var tischNode = new XElement("tisch");
-			tischNode.Add(CreateXYNode("groesse", tischGroesse.Item1, tischGroesse.Item2));
-			tischNode.Add(CreateXYNode("position", tischPosition.Item1, tischPosition.Item2));
-			raumNode.Add(tischNode);
-
-			configRoot.Save(XML_PATH);
-            Close();
-		}
-        */
         public void setTischPosition(int x, int y) 
         {
             tischPosition = new Tuple<int, int>(x,y);
